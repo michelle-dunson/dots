@@ -1,0 +1,41 @@
+@use "../../styles/variables" as *;
+
+.indicator {
+  text-align: center;
+  padding: $spacing-sm $spacing-md;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+}
+
+.turnText {
+  font-family: $font-hand;
+  font-size: 1.4rem;
+  color: $ink-dark;
+}
+
+.swatch {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid $ink-dark;
+}
+
+.extraTurn {
+  font-family: $font-hand;
+  font-size: 1.3rem;
+  color: $ink-dark;
+  animation: pulse 1s ease infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}

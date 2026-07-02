@@ -1,0 +1,34 @@
+// Vintage pen-and-paper palette
+$paper-bg: #f4f0e6;
+$paper-shadow: rgba(44, 36, 22, 0.15);
+$page-bg: #dce8f4;
+$page-bg-deep: #c8dced;
+$ink-dark: #2c2416;
+$ink-muted: #6b5d4d;
+$margin-line: #d4c4b0;
+$margin-line-red: rgba(192, 57, 43, 0.35);
+$notebook-gutter: 3.5rem;
+$notebook-line-offset: 2.5rem;
+$notebook-line-spacing: 28px;
+$notebook-top-margin: 56px;
+$notebook-rule-color: rgba(96, 140, 192, 0.34);
+
+$player-colors: (
+  0: #c0392b,
+  1: #2980b9,
+  2: #27ae60,
+  3: #d35400,
+);
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+$font-hand: var(--font-caveat), "Caveat", cursive;
+$font-body: var(--font-libre), "Libre Baskerville", Georgia, serif;
+
+$border-radius: 4px;
+$transition-fast: 200ms ease;
+$game-panel-max-width: 560px;

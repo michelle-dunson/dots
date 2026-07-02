@@ -1,0 +1,44 @@
+@use "variables" as *;
+
+@mixin paper-surface {
+  background-color: $paper-bg;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.4) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(200, 190, 170, 0.3) 0%, transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 27px,
+      $notebook-rule-color 27px,
+      $notebook-rule-color 28px
+    );
+  background-position:
+    0 0,
+    0 0,
+    0 calc(#{$notebook-top-margin} - 27px);
+  box-shadow:
+    2px 3px 8px $paper-shadow,
+    inset 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+@mixin button-base {
+  font-family: $font-hand;
+  font-size: 1.25rem;
+  padding: $spacing-sm $spacing-lg;
+  border: 2px solid $ink-dark;
+  border-radius: $border-radius;
+  background: $paper-bg;
+  color: $ink-dark;
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-fast;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 2px 3px 6px $paper-shadow;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

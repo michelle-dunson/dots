@@ -1,0 +1,78 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.app {
+  min-height: 100vh;
+  padding: $spacing-lg $spacing-md $spacing-xl;
+}
+
+.setupView {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - #{$spacing-xl * 2});
+}
+
+.gameView {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: $spacing-lg;
+  width: 100%;
+  max-width: min(90vw, $game-panel-max-width);
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  width: 100%;
+}
+
+.gameTitle {
+  font-size: 2rem;
+  margin-bottom: $spacing-xs;
+}
+
+.newGameButton {
+  @include button-base;
+  font-size: 1rem;
+  padding: $spacing-xs $spacing-md;
+  margin-top: $spacing-sm;
+}
+
+.boardSection {
+  @include paper-surface;
+  padding: $spacing-md $spacing-lg;
+  border-radius: $border-radius;
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $margin-line-red;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: $spacing-md $spacing-sm $spacing-lg;
+  }
+
+  .app:has(.gameView) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .gameTitle {
+    font-size: 1.6rem;
+  }
+}

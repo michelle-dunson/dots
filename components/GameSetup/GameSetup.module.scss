@@ -1,0 +1,136 @@
+@use "sass:color";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.setup {
+  @include paper-surface;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 0 $spacing-xl $spacing-xl $notebook-gutter;
+  border-radius: $border-radius;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: $notebook-line-offset;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: $margin-line-red;
+    pointer-events: none;
+  }
+}
+
+.titleBlock {
+  position: relative;
+  height: calc(#{$notebook-top-margin} + 1rem);
+  margin-bottom: 0;
+  z-index: 1;
+}
+
+.title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: calc(#{$notebook-line-spacing} - 1rem);
+  font-size: 2.25rem;
+  line-height: 1;
+  margin: 0;
+  color: $ink-dark;
+}
+
+.subtitle {
+  position: relative;
+  top: -0.5rem;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  color: $ink-muted;
+  margin-bottom: $spacing-md;
+  font-style: italic;
+  min-height: $notebook-line-spacing;
+  display: flex;
+  align-items: flex-end;
+}
+
+.section {
+  margin-bottom: $spacing-lg;
+}
+
+.label {
+  font-family: $font-hand;
+  font-size: 1.3rem;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.playerCount {
+  display: flex;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
+.countButton {
+  @include button-base;
+  min-width: 3rem;
+  padding: $spacing-sm $spacing-md;
+
+  &.active {
+    background: $ink-dark;
+    color: $paper-bg;
+  }
+}
+
+.nameInputs {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.nameField {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+}
+
+.colorSwatch {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  border: 2px solid $ink-dark;
+  flex-shrink: 0;
+}
+
+.nameInput {
+  flex: 1;
+  padding: $spacing-sm;
+  border: 1px solid $ink-muted;
+  border-radius: $border-radius;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+
+  &:focus {
+    outline: 2px solid $ink-dark;
+    outline-offset: 1px;
+  }
+}
+
+.startButton {
+  @include button-base;
+  width: 100%;
+  font-size: 1.5rem;
+  margin-top: $spacing-md;
+  background: $ink-dark;
+  color: $paper-bg;
+
+  &:hover:not(:disabled) {
+    background: color.adjust($ink-dark, $lightness: 10%);
+  }
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: $ink-muted;
+  margin-top: $spacing-md;
+  text-align: center;
+}

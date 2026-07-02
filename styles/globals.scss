@@ -1,0 +1,38 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  min-height: 100vh;
+}
+
+body {
+  font-family: $font-body;
+  color: $ink-dark;
+  background: linear-gradient(160deg, $page-bg 0%, $page-bg-deep 100%);
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  font-family: $font-hand;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: $font-body;
+}

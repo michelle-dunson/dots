@@ -1,0 +1,82 @@
+@use "../../styles/variables" as *;
+
+.boardWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.board {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: manipulation;
+}
+
+.dot {
+  fill: $ink-dark;
+}
+
+.squareFill {
+  opacity: 0;
+  animation: fadeIn 300ms ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0.28;
+  }
+}
+
+.edgeHit {
+  stroke: transparent;
+  stroke-width: 24;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &.hoverable:hover + .edgePreview,
+  &.hoverable:hover ~ .edgePreview {
+    opacity: 0.5;
+  }
+}
+
+.edgePreview {
+  stroke: $ink-muted;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.edgeDrawn {
+  stroke-linecap: round;
+  stroke-width: 4;
+  animation: drawLine 200ms ease forwards;
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.thinkingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(244, 240, 230, 0.6);
+  font-family: $font-hand;
+  font-size: 1.5rem;
+  color: $ink-muted;
+  pointer-events: none;
+  border-radius: $border-radius;
+}
