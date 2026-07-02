@@ -13,6 +13,7 @@ export function GameApp() {
     startGame,
     playEdge,
     resetGame,
+    playAgain,
     isAiThinking,
     isHumanTurn,
   } = useGame();
@@ -53,7 +54,7 @@ export function GameApp() {
         </div>
 
         {state.phase === "finished" && (
-          <GameOver state={state} onPlayAgain={resetGame} />
+          <GameOver state={state} onPlayAgain={playAgain} />
         )}
       </div>
     </div>

@@ -9,6 +9,7 @@ import type { EdgeId, GameState, PlayerConfig } from "@/lib/game/types";
 type GameAction =
   | { type: "START"; players: PlayerConfig[] }
   | { type: "PLAY_EDGE"; edgeId: EdgeId }
+  | { type: "RESTART" }
   | { type: "RESET" }
   | { type: "CLEAR_EXTRA_TURN_MESSAGE" };
 
@@ -58,6 +59,17 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
         state: { ...context.state, extraTurnMessage: false },
       };
     }
+    case "RESTART": {
+      if (!context.state) {
+        return context;
+      }
+
+      const newState = createInitialState(context.state.players);
+      return {
+        state: newState,
+        isAiThinking: shouldAiThink(newState),
+      };
+    }
     case "RESET":
       return { state: null, isAiThinking: false };
     default:
@@ -99,6 +111,13 @@ export function useGame() {
       clearTimeout(aiTimeoutRef.current);
     }
     dispatch({ type: "RESET" });
+  }, []);
+
+  const playAgain = useCallback(() => {
+    if (aiTimeoutRef.current) {
+      clearTimeout(aiTimeoutRef.current);
+    }
+    dispatch({ type: "RESTART" });
   }, []);
 
   const clearExtraTurnMessage = useCallback(() => {
@@ -145,6 +164,7 @@ export function useGame() {
     startGame,
     playEdge,
     resetGame,
+    playAgain,
     isAiThinking,
     isHumanTurn,
     currentPlayer,
