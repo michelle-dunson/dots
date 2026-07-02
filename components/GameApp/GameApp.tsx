@@ -16,6 +16,7 @@ export function GameApp() {
     playAgain,
     isAiThinking,
     isHumanTurn,
+    gameId,
   } = useGame();
 
   if (!state) {
@@ -46,6 +47,7 @@ export function GameApp() {
 
         <div className={styles.boardSection}>
           <GameBoard
+            key={gameId}
             state={state}
             onEdgeClick={playEdge}
             isHumanTurn={isHumanTurn}

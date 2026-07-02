@@ -16,6 +16,7 @@ type GameAction =
 interface GameContext {
   state: GameState | null;
   isAiThinking: boolean;
+  gameId: number;
 }
 
 function shouldAiThink(state: GameState): boolean {
@@ -33,6 +34,7 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
       return {
         state: newState,
         isAiThinking: shouldAiThink(newState),
+        gameId: context.gameId + 1,
       };
     }
     case "PLAY_EDGE": {
@@ -48,6 +50,7 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
       return {
         state: result.state,
         isAiThinking: shouldAiThink(result.state),
+        gameId: context.gameId,
       };
     }
     case "CLEAR_EXTRA_TURN_MESSAGE": {
@@ -57,6 +60,7 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
       return {
         ...context,
         state: { ...context.state, extraTurnMessage: false },
+        gameId: context.gameId,
       };
     }
     case "RESTART": {
@@ -68,10 +72,11 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
       return {
         state: newState,
         isAiThinking: shouldAiThink(newState),
+        gameId: context.gameId + 1,
       };
     }
     case "RESET":
-      return { state: null, isAiThinking: false };
+      return { state: null, isAiThinking: false, gameId: context.gameId };
     default:
       return context;
   }
@@ -80,9 +85,10 @@ function gameReducer(context: GameContext, action: GameAction): GameContext {
 const AI_THINK_DELAY_MS = 400;
 
 export function useGame() {
-  const [{ state, isAiThinking }, dispatch] = useReducer(gameReducer, {
+  const [{ state, isAiThinking, gameId }, dispatch] = useReducer(gameReducer, {
     state: null,
     isAiThinking: false,
+    gameId: 0,
   });
   const aiTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -166,6 +172,7 @@ export function useGame() {
     resetGame,
     playAgain,
     isAiThinking,
+    gameId,
     isHumanTurn,
     currentPlayer,
     clearExtraTurnMessage,
