@@ -1,0 +1,69 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.wordDisplay {
+  font-family: $font-hand;
+  font-size: clamp(1.8rem, 6vw, 2.5rem);
+  letter-spacing: 0.35em;
+  text-align: center;
+  color: $ink-dark;
+  min-height: 3rem;
+}
+
+.wrongLetters {
+  text-align: center;
+  font-family: $font-body;
+  font-size: 0.95rem;
+  color: $ink-muted;
+  font-style: italic;
+  min-height: 1.25rem;
+}
+
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: $spacing-xs;
+  max-width: 360px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.key {
+  @include button-base;
+  padding: $spacing-sm 0;
+  font-size: 1.1rem;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.35);
+
+  &.correct {
+    background: rgba(39, 174, 96, 0.2);
+    border-color: #27ae60;
+    color: #1e8449;
+  }
+
+  &.wrong {
+    background: rgba(192, 57, 43, 0.12);
+    border-color: rgba(192, 57, 43, 0.4);
+    color: $ink-muted;
+    opacity: 0.6;
+  }
+
+  &:disabled {
+    cursor: default;
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .keyboard {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+}

@@ -147,12 +147,35 @@ function TicTacToePreview() {
   );
 }
 
+function HangmanPreview() {
+  return (
+    <svg
+      className={styles.icon}
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+    >
+      <line x1="12" y1="88" x2="88" y2="88" stroke="#2c2416" strokeWidth="2.5" />
+      <line x1="28" y1="88" x2="28" y2="18" stroke="#2c2416" strokeWidth="2.5" />
+      <line x1="28" y1="18" x2="62" y2="18" stroke="#2c2416" strokeWidth="2.5" />
+      <line x1="62" y1="18" x2="62" y2="30" stroke="#2c2416" strokeWidth="2.5" />
+      <circle cx="62" cy="42" r="10" fill="none" stroke="#c0392b" strokeWidth="2.5" />
+      <line x1="62" y1="52" x2="62" y2="68" stroke="#2980b9" strokeWidth="2.5" />
+      <line x1="62" y1="58" x2="50" y2="66" stroke="#2980b9" strokeWidth="2.5" />
+      <text x="70" y="78" className={styles.mark} fill="#2c2416">
+        A_E
+      </text>
+    </svg>
+  );
+}
+
 export function GameIcon({ gameId }: GameIconProps) {
   switch (gameId) {
     case "dots-and-boxes":
       return <DotsAndBoxesPreview />;
     case "tic-tac-toe":
       return <TicTacToePreview />;
+    case "hangman":
+      return <HangmanPreview />;
     default:
       return null;
   }

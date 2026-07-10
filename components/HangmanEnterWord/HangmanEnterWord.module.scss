@@ -1,0 +1,65 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.enterWord {
+  @include paper-surface;
+  padding: $spacing-lg;
+  border-radius: $border-radius;
+  width: 100%;
+  text-align: center;
+}
+
+.passNotice {
+  font-family: $font-hand;
+  font-size: 1.5rem;
+  margin-bottom: $spacing-md;
+  color: $ink-dark;
+}
+
+.instruction {
+  font-family: $font-body;
+  font-size: 0.95rem;
+  color: $ink-muted;
+  font-style: italic;
+  margin-bottom: $spacing-lg;
+}
+
+.wordInput {
+  width: 100%;
+  max-width: 280px;
+  padding: $spacing-sm $spacing-md;
+  border: 2px solid $ink-muted;
+  border-radius: $border-radius;
+  background: rgba(255, 255, 255, 0.5);
+  font-family: $font-hand;
+  font-size: 1.5rem;
+  text-align: center;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+  margin-bottom: $spacing-sm;
+
+  &:focus {
+    outline: 2px solid $ink-dark;
+    outline-offset: 1px;
+  }
+}
+
+.error {
+  color: #a93226;
+  font-size: 0.9rem;
+  margin-bottom: $spacing-md;
+  min-height: 1.25rem;
+}
+
+.submitButton {
+  @include button-base;
+  font-size: 1.25rem;
+  background: $ink-dark;
+  color: $paper-bg;
+}
+
+.hint {
+  font-size: 0.85rem;
+  color: $ink-muted;
+  margin-top: $spacing-md;
+}

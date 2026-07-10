@@ -1,0 +1,48 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 36, 22, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: $spacing-md;
+}
+
+.modal {
+  @include paper-surface;
+  padding: $spacing-xl;
+  border-radius: $border-radius;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: $spacing-md;
+}
+
+.message {
+  font-family: $font-body;
+  font-size: 1.1rem;
+  margin-bottom: $spacing-sm;
+}
+
+.wordReveal {
+  font-family: $font-hand;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  color: $ink-dark;
+  margin-bottom: $spacing-lg;
+}
+
+.playAgain {
+  @include button-base;
+  font-size: 1.4rem;
+  background: $ink-dark;
+  color: $paper-bg;
+}

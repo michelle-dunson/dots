@@ -1,0 +1,32 @@
+@use "../../styles/variables" as *;
+
+.gallows {
+  width: 100%;
+  max-width: 220px;
+  margin: 0 auto;
+  display: block;
+}
+
+.part {
+  stroke: $ink-dark;
+  stroke-width: 3;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  animation: drawPart 250ms ease forwards;
+}
+
+.head {
+  fill: none;
+}
+
+@keyframes drawPart {
+  from {
+    opacity: 0;
+    stroke-dashoffset: 40;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
