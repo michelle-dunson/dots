@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { GameApp } from "@/components/GameApp/GameApp";
 import { HomeScreen } from "@/components/HomeScreen/HomeScreen";
+import { TicTacToeApp } from "@/components/TicTacToeApp/TicTacToeApp";
 import type { GameId } from "@/lib/games";
 import styles from "./PaperGamesApp.module.scss";
 
@@ -11,6 +12,10 @@ export function PaperGamesApp() {
 
   if (selectedGame === "dots-and-boxes") {
     return <GameApp onBackToHome={() => setSelectedGame(null)} />;
+  }
+
+  if (selectedGame === "tic-tac-toe") {
+    return <TicTacToeApp onBackToHome={() => setSelectedGame(null)} />;
   }
 
   return (

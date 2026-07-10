@@ -34,11 +34,25 @@
   margin-bottom: $spacing-xs;
 }
 
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-sm;
+  justify-content: center;
+  margin-top: $spacing-sm;
+}
+
 .newGameButton {
   @include button-base;
   font-size: 1rem;
   padding: $spacing-xs $spacing-md;
-  margin-top: $spacing-sm;
+}
+
+.allGamesButton {
+  @include button-base;
+  font-size: 1rem;
+  padding: $spacing-xs $spacing-md;
+  background: transparent;
 }
 
 .boardSection {

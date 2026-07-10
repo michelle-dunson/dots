@@ -86,10 +86,73 @@ function DotsAndBoxesPreview() {
   );
 }
 
+function TicTacToePreview() {
+  const red = "#c0392b";
+  const blue = "#2980b9";
+  const size = 80;
+  const pad = 12;
+  const cell = size / 3;
+
+  const marks: Array<{ row: number; col: number; mark: "X" | "O"; color: string }> = [
+    { row: 0, col: 0, mark: "X", color: red },
+    { row: 1, col: 1, mark: "O", color: blue },
+    { row: 0, col: 2, mark: "O", color: blue },
+    { row: 2, col: 0, mark: "X", color: red },
+    { row: 2, col: 2, mark: "X", color: red },
+  ];
+
+  return (
+    <svg
+      className={styles.icon}
+      viewBox={`0 0 ${size + pad * 2} ${size + pad * 2}`}
+      aria-hidden="true"
+    >
+      {[1, 2].map((index) => (
+        <line
+          key={`h-${index}`}
+          x1={pad}
+          y1={pad + index * cell}
+          x2={pad + size}
+          y2={pad + index * cell}
+          stroke="#2c2416"
+          strokeWidth={1.5}
+          opacity={0.35}
+        />
+      ))}
+      {[1, 2].map((index) => (
+        <line
+          key={`v-${index}`}
+          x1={pad + index * cell}
+          y1={pad}
+          x2={pad + index * cell}
+          y2={pad + size}
+          stroke="#2c2416"
+          strokeWidth={1.5}
+          opacity={0.35}
+        />
+      ))}
+      {marks.map((item, index) => (
+        <text
+          key={index}
+          x={pad + item.col * cell + cell / 2}
+          y={pad + item.row * cell + cell / 2 + 6}
+          textAnchor="middle"
+          fill={item.color}
+          className={styles.mark}
+        >
+          {item.mark}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
 export function GameIcon({ gameId }: GameIconProps) {
   switch (gameId) {
     case "dots-and-boxes":
       return <DotsAndBoxesPreview />;
+    case "tic-tac-toe":
+      return <TicTacToePreview />;
     default:
       return null;
   }
