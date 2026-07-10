@@ -1,0 +1,12 @@
+@use "../../styles/variables" as *;
+
+.icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  flex-shrink: 0;
+  display: block;
+}
+
+.dot {
+  fill: $ink-dark;
+}

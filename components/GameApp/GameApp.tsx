@@ -7,7 +7,11 @@ import { ScoreBoard } from "@/components/ScoreBoard/ScoreBoard";
 import { useGame } from "@/hooks/useGame";
 import styles from "./GameApp.module.scss";
 
-export function GameApp() {
+interface GameAppProps {
+  onBackToHome: () => void;
+}
+
+export function GameApp({ onBackToHome }: GameAppProps) {
   const {
     state,
     startGame,
@@ -23,7 +27,7 @@ export function GameApp() {
     return (
       <div className={styles.app}>
         <div className={styles.setupView}>
-          <GameSetup onStart={startGame} />
+          <GameSetup onStart={startGame} onBack={onBackToHome} />
         </div>
       </div>
     );

@@ -7,9 +7,10 @@ import styles from "./GameSetup.module.scss";
 
 interface GameSetupProps {
   onStart: (players: PlayerConfig[]) => void;
+  onBack: () => void;
 }
 
-export function GameSetup({ onStart }: GameSetupProps) {
+export function GameSetup({ onStart, onBack }: GameSetupProps) {
   const [playerCount, setPlayerCount] = useState(2);
   const [names, setNames] = useState<string[]>([
     "Player 1",
@@ -107,6 +108,10 @@ export function GameSetup({ onStart }: GameSetupProps) {
 
       <button type="button" className={styles.startButton} onClick={handleStart}>
         Start Game
+      </button>
+
+      <button type="button" className={styles.backButton} onClick={onBack}>
+        ← All Games
       </button>
 
       <p className={styles.hint}>7×7 dot grid · 36 squares · pass-and-play</p>

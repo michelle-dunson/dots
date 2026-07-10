@@ -16,9 +16,9 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Dots & Boxes",
+  title: "Paper Games",
   description:
-    "A vintage pen-and-paper Dots and Boxes game for 1–4 local players.",
+    "Classic pen-and-paper games digitized with a vintage notebook feel.",
 };
 
 export default function RootLayout({
