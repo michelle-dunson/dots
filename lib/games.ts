@@ -1,4 +1,4 @@
-export type GameId = "dots-and-boxes" | "tic-tac-toe" | "hangman";
+export type GameId = "dots-and-boxes" | "tic-tac-toe" | "hangman" | "sudoku";
 
 export interface GameInfo {
   id: GameId;
@@ -24,6 +24,12 @@ export const GAMES: GameInfo[] = [
     id: "hangman",
     name: "Hangman",
     description: "Guess the word letter by letter before the drawing is complete.",
+    available: true,
+  },
+  {
+    id: "sudoku",
+    name: "Sudoku",
+    description: "Fill the 9×9 grid with digits 1–9. Each row, column, and box must be complete.",
     available: true,
   },
 ];

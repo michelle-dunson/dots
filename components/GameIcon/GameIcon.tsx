@@ -168,6 +168,82 @@ function HangmanPreview() {
   );
 }
 
+function SudokuPreview() {
+  const red = "#c0392b";
+  const blue = "#2980b9";
+  const size = 72;
+  const pad = 14;
+  const cell = size / 9;
+
+  const marks: Array<{
+    row: number;
+    col: number;
+    value: number;
+    color: string;
+  }> = [
+    { row: 0, col: 0, value: 5, color: red },
+    { row: 1, col: 4, value: 9, color: blue },
+    { row: 3, col: 2, value: 3, color: blue },
+    { row: 4, col: 4, value: 1, color: red },
+    { row: 6, col: 7, value: 8, color: blue },
+    { row: 8, col: 8, value: 9, color: red },
+  ];
+
+  return (
+    <svg
+      className={styles.icon}
+      viewBox={`0 0 ${size + pad * 2} ${size + pad * 2}`}
+      aria-hidden="true"
+    >
+      <rect
+        x={pad}
+        y={pad}
+        width={size}
+        height={size}
+        fill="none"
+        stroke="#2c2416"
+        strokeWidth={2}
+      />
+      {[3, 6].map((index) => (
+        <line
+          key={`h-${index}`}
+          x1={pad}
+          y1={pad + index * cell}
+          x2={pad + size}
+          y2={pad + index * cell}
+          stroke="#2c2416"
+          strokeWidth={1.5}
+          opacity={0.35}
+        />
+      ))}
+      {[3, 6].map((index) => (
+        <line
+          key={`v-${index}`}
+          x1={pad + index * cell}
+          y1={pad}
+          x2={pad + index * cell}
+          y2={pad + size}
+          stroke="#2c2416"
+          strokeWidth={1.5}
+          opacity={0.35}
+        />
+      ))}
+      {marks.map((mark) => (
+        <text
+          key={`${mark.row}-${mark.col}`}
+          x={pad + mark.col * cell + cell / 2}
+          y={pad + mark.row * cell + cell / 2 + 3}
+          textAnchor="middle"
+          className={styles.sudokuMark}
+          fill={mark.color}
+        >
+          {mark.value}
+        </text>
+      ))}
+    </svg>
+  );
+}
+
 export function GameIcon({ gameId }: GameIconProps) {
   switch (gameId) {
     case "dots-and-boxes":
@@ -176,6 +252,8 @@ export function GameIcon({ gameId }: GameIconProps) {
       return <TicTacToePreview />;
     case "hangman":
       return <HangmanPreview />;
+    case "sudoku":
+      return <SudokuPreview />;
     default:
       return null;
   }

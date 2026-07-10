@@ -4,6 +4,7 @@ import { useState } from "react";
 import { GameApp } from "@/components/GameApp/GameApp";
 import { HangmanApp } from "@/components/HangmanApp/HangmanApp";
 import { HomeScreen } from "@/components/HomeScreen/HomeScreen";
+import { SudokuApp } from "@/components/SudokuApp/SudokuApp";
 import { TicTacToeApp } from "@/components/TicTacToeApp/TicTacToeApp";
 import type { GameId } from "@/lib/games";
 import styles from "./PaperGamesApp.module.scss";
@@ -21,6 +22,10 @@ export function PaperGamesApp() {
 
   if (selectedGame === "hangman") {
     return <HangmanApp onBackToHome={() => setSelectedGame(null)} />;
+  }
+
+  if (selectedGame === "sudoku") {
+    return <SudokuApp onBackToHome={() => setSelectedGame(null)} />;
   }
 
   return (

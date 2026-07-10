@@ -1,0 +1,194 @@
+@use "../../styles/variables" as *;
+
+.boardWrapper {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  width: 100%;
+  aspect-ratio: 1;
+  border: 3px solid $ink-dark;
+  background: rgba(255, 255, 255, 0.25);
+  touch-action: manipulation;
+}
+
+.cell {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(44, 36, 22, 0.2);
+  background: transparent;
+  padding: 0;
+  min-height: 0;
+  font-family: $font-hand;
+  font-size: clamp(1.1rem, 4vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background $transition-fast;
+  overflow: hidden;
+
+  &.boxRight {
+    border-right: 3px solid $ink-dark;
+  }
+
+  &.boxBottom {
+    border-bottom: 3px solid $ink-dark;
+  }
+
+  &.altBox {
+    background: rgba(255, 255, 255, 0.15);
+  }
+
+  &.given {
+    color: $ink-dark;
+    cursor: default;
+  }
+
+  &.editable {
+    color: #2980b9;
+  }
+
+  &.selected {
+    background: rgba(41, 128, 185, 0.18);
+    outline: 2px solid rgba(41, 128, 185, 0.5);
+    outline-offset: -2px;
+  }
+
+  &.conflict {
+    color: #c0392b;
+    background: rgba(192, 57, 43, 0.12);
+  }
+
+  &:disabled {
+    cursor: default;
+  }
+
+  &:hover:not(:disabled):not(.given) {
+    background: rgba(255, 255, 255, 0.35);
+  }
+}
+
+.notes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+}
+
+.note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-body;
+  font-size: clamp(0.45rem, 1.6vw, 0.62rem);
+  line-height: 1;
+  color: transparent;
+
+  &.noteActive {
+    color: $ink-muted;
+    font-weight: 700;
+  }
+}
+
+.numberPad {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: $spacing-sm;
+  margin-top: $spacing-lg;
+}
+
+.numberButton,
+.pencilButton,
+.clearButton {
+  font-family: $font-hand;
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: $spacing-sm;
+  border: 2px solid $ink-dark;
+  border-radius: $border-radius;
+  background: rgba(255, 255, 255, 0.45);
+  color: $ink-dark;
+  cursor: pointer;
+  transition: background $transition-fast;
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.75);
+  }
+
+  &:disabled {
+    opacity: 0.45;
+    cursor: default;
+  }
+}
+
+.clearButton {
+  grid-column: span 2;
+  font-size: 1.2rem;
+}
+
+.pencilButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pencilContent {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.pencilIcon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.pencilLabel {
+  position: absolute;
+  bottom: -0.05rem;
+  left: 20%;
+  transform: translateX(-50%);
+  font-family: $font-body;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 0 0.12rem;
+  background: rgba(244, 240, 230, 0.92);
+  border-radius: 2px;
+}
+
+.pencilLabelOn {
+  color: #2980b9;
+}
+
+.pencilLabelOff {
+  color: rgba(192, 57, 43, 0.55);
+}
+
+.pencilOn {
+  color: $ink-dark;
+  border-color: $ink-dark;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.pencilOff {
+  color: $ink-muted;
+  border-color: rgba(107, 93, 77, 0.45);
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 0.72;
+}
